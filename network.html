@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Service Network | Mission Go Logistics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="top-nav">
+  <div class="logo-wrap">
+    <a href="index.html">
+      <img src="img/logo.png" alt="Mission Go logo" class="logo" />
+    </a>
+  </div>
+<!-- 桌面导航 -->
+<nav class="nav-links desktop-nav">
+  <a href="index.html" data-i18n="nav_home">Home</a>
+  <a href="about.html" data-i18n="nav_about">About</a>
+  <a href="services.html" data-i18n="nav_services">Services</a>
+  <a href="network.html" data-i18n="nav_network" class="active">Network</a>
+  <a href="https://mission-express.square.site/" target="_blank" rel="noopener" data-i18n="nav_store">Online Store</a>
+  <a href="contact.html" data-i18n="nav_contact">Contact</a>
+</nav>
+
+  <!-- 右侧按钮 -->
+  <div class="header-actions">
+    <button id="lang-toggle" class="lang-toggle">中文</button>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+  </div>
+</header>
+
+<!-- 手机菜单 -->
+<nav class="mobile-nav" id="mobileNav">
+  <a href="index.html" data-i18n="nav_home">Home</a>
+  <a href="about.html" data-i18n="nav_about">About</a>
+  <a href="services.html" data-i18n="nav_services">Services</a>
+  <a href="network.html" data-i18n="nav_network">Network</a>
+  <a href="https://mission-express.square.site/" target="_blank" rel="noopener" data-i18n="nav_store">Online Store</a>
+  <a href="contact.html" data-i18n="nav_contact">Contact</a>
+</nav>
+
+<div class="nav-backdrop" id="navBackdrop"></div>
+
+
+  <main>
+    <section class="page-hero">
+      <div class="section-inner">
+        <h1 data-i18n="network_title">Service network</h1>
+        <p class="section-intro" data-i18n="network_intro">
+          Mission Go provides delivery coverage across Saskatchewan, including Saskatoon, Regina, Moose Jaw, and nearby communities, with routes and service areas that can be expanded as demand grows.
+        </p>
+      </div>
+    </section>
+
+    <section class="section light">
+      <div class="section-inner two-cols">
+        <div>
+          <h2 data-i18n="network_cities_title">Current focus cities</h2>
+          <ul class="bullet-list">
+            <li data-i18n="network_cities_1">
+              Saskatoon – Regina corridor — scheduled regional line-haul between Saskatoon and Regina, with zone-based pickup & last-mile delivery across intermediate communities.
+            </li>
+            <li data-i18n="network_cities_2">
+              Regina – regional line‑haul from Moose Jaw and last‑mile delivery by defined zones.
+            </li>
+            <li data-i18n="network_cities_3">
+              Moose Jaw – local delivery and pickup‑point operations, including neighborhood parcel counters.
+            </li>
+          </ul>
+        </div>
+        <div class="map-placeholder" style="padding:0;background:none;border:none;">
+  <iframe
+    src="https://www.google.com/maps?q=443%20Lillooet%20St%20W%2C%20Moose%20Jaw%2C%20SK&output=embed"
+    width="100%"
+    height="220"
+    style="border:0; border-radius:16px; display:block;"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    allowfullscreen>
+  </iframe>
+</div>
+
+    </section>
+
+    <section class="section dark">
+      <div class="section-inner">
+        <h2 data-i18n="network_expand_title">Expansion & custom routes</h2>
+        <p data-i18n="network_expand_body">
+          We can design new routes and service areas based on your parcel volume, postal codes, and time
+          window requirements. Talk to us early so we can build a scalable plan.
+        </p>
+        <a href="contact.html" class="btn primary" data-i18n="btn_contact_us">Contact us</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Mission Express Logistics Inc. All rights reserved.</p>
+      <p>
+  <a href="liability.html">
+    <span class="lang-block lang-en">Liability &amp; Coverage Policy</span>
+    <span class="lang-block lang-zh">责任与保险条款</span>
+  </a>
+</p>
+    </div>
+  </footer>
+
+  <script src="js/lang.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>

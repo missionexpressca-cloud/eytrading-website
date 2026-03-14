@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact | Mission Go Logistics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+  .contact-grid {
+    position: relative;
+  }
+
+  .platform-title-hide {
+    display: none;
+  }
+
+.payment-qr-floating {
+  position: absolute;
+  left: 170px;
+  top: 318px;
+  z-index: 2;
+}
+
+.payment-qr-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.payment-qr-text {
+  display: flex;
+  flex-direction: column;
+  align-items: .payment-qr-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.payment-qr-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.payment-qr-tag {
+  display: inline-block;
+  width: auto;
+  max-width: max-content;
+  padding: 4px 10px;
+  font-size: 12px;
+  line-height: 1.2;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  white-space: nowrap;
+}
+
+.payment-qr-caption {
+  display: block;
+  margin: 0;
+  font-size: 11px;
+  opacity: 0.78;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.payment-qr-box {
+  width: 96px;
+  text-align: center;
+};
+}
+
+.payment-qr-tag {
+  display: inline-block;
+  margin: 0 0 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  line-height: 1.2;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  white-space: nowrap;
+}
+
+.payment-qr-caption {
+  display: block;
+  margin: 0;
+  font-size: 11px;
+  opacity: 0.78;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.payment-qr-box {
+  width: 96px;
+  text-align: center;
+}
+.payment-qr-image {
+  display: block;
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  margin: 0 auto;
+  border-radius: 12px;
+  background: #fff;
+  padding: 6px;
+}
+
+.payment-qr-caption {
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+  opacity: 0.78;
+  white-space: nowrap;
+}
+@media (max-width: 900px) {
+  .payment-qr-floating {
+    position: static;
+    margin-top: 12px;
+  }
+
+  .payment-qr-row {
+    display: block;
+  }
+
+  .payment-qr-tag {
+    display: inline-block;
+    width: auto;
+    max-width: max-content;
+    margin: 0 0 10px;
+    white-space: nowrap;
+  }
+
+  .payment-qr-caption {
+    white-space: nowrap;
+  }
+}
+</style>
+</head>
+<body>
+  <header class="top-nav">
+    <div class="logo-wrap">
+      <a href="index.html">
+        <img src="img/logo.png" alt="Mission Go logo" class="logo" />
+      </a>
+    </div>
+
+    <!-- 桌面导航 -->
+    <nav class="nav-links desktop-nav">
+      <a href="index.html" data-i18n="nav_home">Home</a>
+      <a href="about.html" data-i18n="nav_about">About</a>
+      <a href="services.html" data-i18n="nav_services">Services</a>
+      <a href="network.html" data-i18n="nav_network">Network</a>
+      <a href="https://mission-express.square.site/" target="_blank" rel="noopener" data-i18n="nav_store">Online Store</a>
+      <a href="contact.html" data-i18n="nav_contact" class="active">Contact</a>
+    </nav>
+
+    <!-- 右侧按钮 -->
+    <div class="header-actions">
+      <button id="lang-toggle" class="lang-toggle">中文</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <!-- 手机菜单 -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" data-i18n="nav_home">Home</a>
+    <a href="about.html" data-i18n="nav_about">About</a>
+    <a href="services.html" data-i18n="nav_services">Services</a>
+    <a href="network.html" data-i18n="nav_network">Network</a>
+    <a href="https://mission-express.square.site/" target="_blank" rel="noopener" data-i18n="nav_store">Online Store</a>
+    <a href="contact.html" data-i18n="nav_contact">Contact</a>
+  </nav>
+
+  <div class="nav-backdrop" id="navBackdrop"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="section-inner">
+        <h1 data-i18n="contact_title">Contact us</h1>
+        <p class="section-intro" data-i18n="contact_intro">
+          Whether you are a carrier, e-commerce platform, or local business, we are happy to discuss
+          how Mission Go can support your delivery needs.
+        </p>
+      </div>
+    </section>
+
+    <section class="section light">
+      <div class="section-inner contact-grid">
+        <div>
+          <h2 data-i18n="contact_business_title">Business & partnership</h2>
+
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:info@missionexpress.ca">info@missionexpress.ca</a>
+          </p>
+
+          <p>
+            <strong data-i18n="contact_company_name_label">Company:</strong>
+            Mission Express Logistics Inc.
+          </p>
+
+          <p>
+            <strong data-i18n="contact_location_label">Location:</strong>
+            Moose Jaw, Saskatchewan, Canada
+          </p>
+
+          <p>
+            <strong data-i18n="contact_phone_label">Phone:</strong>
+            <a href="tel:+13066841235">+1 (306) 684-1235</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="tel:+14032004677">+1 (403) 200-4677</a>
+          </p>
+
+          <p data-i18n="contact_note">
+            Please include a short description of your business, approximate monthly parcel volume,
+            and the cities or postal codes you would like to cover.
+          </p>
+
+          <!-- Parcel Pre-Alert -->
+          <div class="prealert-link contact-prealert">
+            <span class="prealert-tag" data-i18n="contact_prealert_tag">[🇨🇳🇨🇦China→Canada Consolidation]</span><br>
+
+            <a
+              href="https://forms.gle/Vng6jKULNLXxtZuL6"
+              target="_blank"
+              rel="noopener"
+              data-i18n="contact_prealert_btn"
+            >
+              Parcel Pre-Alert
+            </a>
+          </div>
+
+          <!-- Platform Portal -->
+          <div class="prealert-link contact-prealert">
+            <span class="prealert-tag" data-i18n="contact_store_tag">[Courier Platform]</span><br>
+
+<span class="en-sub platform-title-hide">
+  <span data-i18n="contact_store_title">Platform Portal</span>
+</span>
+            <a
+              href="https://me.missionexpress.ca/ssadmin.php"
+              target="_blank"
+              rel="noopener"
+              data-i18n="contact_store_btn"
+            >
+              Enter Platform
+            </a>
+          </div>
+        </div>
+<div class="payment-qr-floating">
+  <div class="payment-qr-row">
+    <div class="payment-qr-text">
+      <div class="payment-qr-tag">
+        <span class="lang-block lang-en">[Pay by QR code]</span>
+        <span class="lang-block lang-zh">【扫码付款】</span>
+      </div>
+
+      <span class="payment-qr-caption">
+        <span class="lang-block lang-en">WeChat Pay / Alipay</span>
+        <span class="lang-block lang-zh">微信支付/支付宝</span>
+      </span>
+    </div>
+
+    <div class="payment-qr-box">
+      <img src="img/payment-CAD.png" alt="Payment QR Code" class="payment-qr-image" />
+    </div>
+  </div>
+</div>
+        <div class="contact-form">
+          <h2 data-i18n="contact_form_title">Send us a message</h2>
+          <p data-i18n="contact_form_note">We will get back to you shortly.</p>
+
+          <form id="contact-form">
+            <label>
+              <span data-i18n="contact_form_name">Name</span>
+              <input type="text" name="name" placeholder="Your name" required />
+            </label>
+
+            <label>
+              <span data-i18n="contact_form_email">Email</span>
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </label>
+
+            <label>
+              <span data-i18n="contact_form_message">Message</span>
+              <textarea name="message" rows="4" placeholder="How can we help?" required></textarea>
+            </label>
+
+            <button type="submit" class="btn primary" data-i18n="contact_form_button">
+              Send message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Mission Express Logistics Inc. All rights reserved.</p>
+      <p>
+        <a href="liability.html">
+          <span class="lang-block lang-en">Liability &amp; Coverage Policy</span>
+          <span class="lang-block lang-zh">责任与保险条款</span>
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/lang.js"></script>
+
+  <script>
+    (function () {
+      const form = document.getElementById('contact-form');
+      if (!form) return;
+
+      form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalText = submitButton ? submitButton.textContent : '';
+
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.textContent = 'Sending...';
+        }
+
+        try {
+          const response = await fetch('https://formspree.io/f/xovrydap', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: formData
+          });
+
+          if (response.ok) {
+            window.location.href = 'success.html';
+          } else {
+            window.location.href = 'error.html';
+          }
+        } catch (err) {
+          window.location.href = 'error.html';
+        } finally {
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = originalText || 'Send message';
+          }
+        }
+      });
+    })();
+  </script>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>

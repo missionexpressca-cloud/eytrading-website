@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About Mission Go | Mission Express Logistics Inc.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="top-nav">
+  <div class="logo-wrap">
+    <a href="index.html">
+      <img src="img/logo.png" alt="Mission Go logo" class="logo" />
+    </a>
+  </div>
+    
+<!-- 桌面导航 -->
+<nav class="nav-links desktop-nav">
+  <a href="index.html" data-i18n="nav_home">Home</a>
+  <a href="about.html" data-i18n="nav_about" class="active">About</a>
+  <a href="services.html" data-i18n="nav_services">Services</a>
+  <a href="network.html" data-i18n="nav_network">Network</a>
+  <a href="https://mission-express.square.site/" target="_blank" rel="noopener" data-i18n="nav_store">Online Store</a>
+  <a href="contact.html" data-i18n="nav_contact">Contact</a>
+</nav>
+
+  <!-- 右侧按钮 -->
+  <div class="header-actions">
+    <button id="lang-toggle" class="lang-toggle">中文</button>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+  </div>
+</header>
+
+<!-- 手机菜单 -->
+<nav class="mobile-nav" id="mobileNav">
+  <a href="index.html" data-i18n="nav_home">Home</a>
+  <a href="about.html" data-i18n="nav_about">About</a>
+  <a href="services.html" data-i18n="nav_services">Services</a>
+  <a href="network.html" data-i18n="nav_network">Network</a>
+  <a href="https://mission-express.square.site/" target="_blank" rel="noopener" data-i18n="nav_store">Online Store</a>
+  <a href="contact.html" data-i18n="nav_contact">Contact</a>
+</nav>
+
+<div class="nav-backdrop" id="navBackdrop"></div>
+
+
+  <main>
+    <section class="page-hero">
+      <div class="section-inner">
+        <h1 data-i18n="about_title">About Mission Go</h1>
+        <p class="section-intro" data-i18n="about_intro">
+          Mission Go is the last‑mile and local distribution brand of Mission Express Logistics Inc.,
+          founded in Saskatchewan to serve real businesses and real communities.
+        </p>
+      </div>
+    </section>
+
+    <section class="section light">
+      <div class="section-inner two-cols">
+        <div>
+          <h2 data-i18n="about_story_title">Our story</h2>
+          <p data-i18n="about_story_body1">
+            We started in Moose Jaw with a simple idea: international parcels, e‑commerce orders,
+            and local shipments should not get “lost” between major carriers and the customer’s front door.
+          </p>
+          <p data-i18n="about_story_body2">
+            Mission Go focuses on the last stretch of the journey – from regional hubs and local warehouses
+            to homes, small businesses, and pickup points across the city.
+          </p>
+        </div>
+        <div class="stat-card">
+          <h3 data-i18n="about_focus_title">What we focus on</h3>
+          <ul class="bullet-list">
+            <li data-i18n="about_focus_1">Last‑mile parcel delivery for e‑commerce and freight partners</li>
+            <li data-i18n="about_focus_2">Neighborhood pickup points for flexible customer pickup</li>
+            <li data-i18n="about_focus_3">Route design and driver app workflows that reduce failed deliveries</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark">
+      <div class="section-inner">
+        <h2 data-i18n="about_values_title">Our principles</h2>
+        <div class="cards-grid">
+          <article class="card">
+            <h3 data-i18n="about_values_1_title">Local & human</h3>
+            <p data-i18n="about_values_1_body">
+              We are based in Saskatchewan, speak the language of local businesses, and value long‑term
+              partnerships over one‑time transactions.
+            </p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="about_values_2_title">Reliable operations</h3>
+            <p data-i18n="about_values_2_body">
+              Clear cut‑off times, predictable routes, and a structured delivery process ensure consistent service.
+            </p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="about_values_3_title">Transparent communication</h3>
+            <p data-i18n="about_values_3_body">
+              We keep carriers, merchants, and end customers informed with status updates and direct support.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Mission Express Logistics Inc. All rights reserved.</p>
+      <p>
+  <a href="liability.html">
+    <span class="lang-block lang-en">Liability &amp; Coverage Policy</span>
+    <span class="lang-block lang-zh">责任与保险条款</span>
+  </a>
+</p>
+    </div>
+  </footer>
+
+  <script src="js/lang.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>

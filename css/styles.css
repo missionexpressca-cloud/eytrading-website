@@ -1,0 +1,649 @@
+/* Basic reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #050814;
+  color: #f7f7ff;
+  line-height: 1.6;
+}
+
+/* Layout helpers */
+.section {
+  padding: 4rem 1.5rem;
+}
+
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section.light {
+  background: #0d101f;
+}
+
+.section.dark {
+  background: radial-gradient(circle at top, #1d2545, #050814 60%);
+}
+
+.section.accent {
+  background: linear-gradient(135deg, #ff9d3b, #ff4fa3);
+  color: #1b1020;
+}
+
+.section.accent .btn.primary {
+  background: #1b1020;
+  color: #fff;
+}
+
+.section.accent .btn.ghost {
+  border-color: #1b1020;
+  color: #1b1020;
+}
+
+.section-intro {
+  max-width: 640px;
+  margin-top: 0.75rem;
+  color: #cfd3ff;
+}
+
+/* Top nav */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(14px);
+  background: rgba(5, 8, 20, 0.88);
+  border-bottom: 1px solid rgba(255, 79, 163, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1.5rem;
+}
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: 0.95rem;
+}
+
+.nav-links a {
+  color: #e7e8ff;
+  text-decoration: none;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.2rem;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff4fa3, #ffb347);
+  transition: width 0.18s ease-out;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.lang-toggle {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: #f7f7ff;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: 70vh;
+  padding: 5rem 1.5rem 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(255, 79, 163, 0.4), transparent 55%),
+    radial-gradient(circle at 90% 0%, rgba(255, 179, 71, 0.35), transparent 55%),
+    url("https://images.pexels.com/photos/6169661/pexels-photo-6169661.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(5, 8, 20, 0.94), rgba(5, 8, 20, 0.7));
+}
+
+.hero-content {
+  position: relative;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.hero-kicker {
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  color: #ffb347;
+  margin-bottom: 0.75rem;
+}
+
+.hero-title {
+  font-size: clamp(2.4rem, 4vw, 3.1rem);
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+
+.hero-sub {
+  max-width: 560px;
+  color: #d2d5ff;
+  margin-bottom: 1.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, background 0.12s;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #ff4fa3, #ffb347);
+  color: #1b1020;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.btn.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
+}
+
+.btn.ghost {
+  background: transparent;
+  color: #f7f7ff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn.ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Metrics */
+.hero-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.metric {
+  padding: 0.9rem 1.1rem;
+  border-radius: 0.9rem;
+  background: rgba(13, 16, 31, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.metric-number {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.metric-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #c3c7ff;
+}
+
+/* Cards grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.card {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: rgba(9, 12, 27, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.section.light .card {
+  background: #121527;
+}
+
+.card-icon {
+  font-size: 1.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.card h3,
+.card h2 {
+  margin-bottom: 0.4rem;
+}
+
+/* Steps */
+.steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.steps li {
+  background: rgba(9, 12, 27, 0.9);
+  border-radius: 1rem;
+  padding: 1.3rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.step-label {
+  font-weight: 600;
+  color: #ffb347;
+}
+
+/* Accent CTA */
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* Page hero */
+.page-hero {
+  padding: 4rem 1.5rem 1rem;
+  background: radial-gradient(circle at 0 0, rgba(255, 79, 163, 0.35), transparent 55%),
+              radial-gradient(circle at 100% 0, rgba(255, 179, 71, 0.35), transparent 55%),
+              #050814;
+}
+
+/* Two-column layout */
+.two-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.stat-card {
+  background: #121527;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.bullet-list {
+  margin-top: 0.75rem;
+  padding-left: 1.2rem;
+  color: #d1d4ff;
+}
+
+/* Map placeholder */
+.map-placeholder {
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.06) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px dashed rgba(255, 255, 255, 0.4);
+}
+
+/* Contact */
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
+  gap: 2rem;
+}
+
+.contact-form form {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.contact-form label {
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+}
+
+input,
+textarea {
+  background: #050814;
+  border-radius: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 0.6rem 0.75rem;
+  color: #f7f7ff;
+}
+
+input:focus,
+textarea:focus {
+  outline: 1px solid #ff4fa3;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: #050814;
+  padding: 1.5rem 1.5rem 2rem;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  font-size: 0.8rem;
+  color: #9ea2cf;
+}
+
+.footer-note {
+  margin-top: 0.3rem;
+}
+
+/* ===========================
+   CTA Right block (accent section)
+   =========================== */
+
+/* Keep accent section as positioning container */
+.section.accent{
+  position: relative;
+  overflow: hidden;
+}
+
+/* Right block: email + button on top, QRs below, moved LEFT (blue area) */
+.section.accent .cta-right{
+  position: absolute;
+
+  /* ✅ 往左移：把 right 调大；往右移：把 right 调小 */
+  right: clamp(260px, 24vw, 520px);
+
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+
+  z-index: 5;
+  white-space: nowrap;
+}
+
+/* top row: email + contact button */
+.section.accent .cta-actions{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* bottom row: two QR cards */
+.section.accent .cta-qr-pair{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section.accent .cta-qr-pair .qr-card{
+  display: inline-flex;
+  line-height: 0;
+}
+
+/* QR image size */
+.section.accent .cta-qr-pair .qr-card img{
+  width: 90px !important;
+  height: 90px !important;
+  object-fit: contain;
+
+  border-radius: 12px;
+  padding: 6px;
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* Medium screens: avoid going too far inside */
+@media (max-width: 1400px){
+  .section.accent .cta-right{
+    right: clamp(160px, 12vw, 320px);
+  }
+}
+
+/* Mobile: stack below text */
+@media (max-width: 900px){
+  .section.accent .cta-right{
+    position: static;
+    transform: none;
+    margin-top: 14px;
+    align-items: flex-start;
+    white-space: normal;
+  }
+}
+
+/* ===========================
+   Mobile menu (hamburger + drawer)
+   =========================== */
+
+.nav-toggle {
+  display: none;
+  font-size: 26px;
+  background: none;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 320px;
+  height: 100vh;
+  background: #0c0f1a;
+  padding: 80px 20px;
+  display: none;
+  flex-direction: column;
+  gap: 18px;
+  transition: right 0.3s ease;
+  z-index: 9999;
+}
+
+.mobile-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.mobile-nav.open {
+  right: 0;
+  display: flex; /* ✅ 打开菜单时才显示 */
+}
+
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+  z-index: 9998;
+}
+
+.nav-backdrop.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ===========================
+   Parcel Pre-Alert link styles
+   =========================== */
+
+.prealert-link {
+  margin-top: 18px;
+  text-align: left;
+}
+
+.prealert-link a {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff6b9a, #ff9f6b);
+  color: #111;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.prealert-link a:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+}
+
+/* Contact page - Parcel Pre-Alert text */
+.contact-prealert {
+  margin-top: 20px;
+}
+
+.prealert-hint {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #eee;
+}
+
+.prealert-hint .en-sub {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #aaa;
+}
+
+/* Make pre-alert button more visible on dark background */
+.contact-prealert a{
+  background: linear-gradient(135deg, #ff6b9a, #ffb36b);
+  color: #111 !important;
+  border: 1px solid rgba(255,255,255,.25);
+  box-shadow: 0 10px 26px rgba(0,0,0,.35);
+}
+
+.contact-prealert a:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(0,0,0,.45);
+}
+
+/* Prevent visited link turning purple */
+.prealert-link a:visited{
+  color: #111 !important;
+}
+
+.prealert-tag{
+  display:inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.18);
+  margin-bottom: 8px;
+}
+
+/* ===========================
+   Fix: hide breadcrumb (purple links at top-left)
+   =========================== */
+.breadcrumb,
+.breadcrumbs,
+nav[aria-label="breadcrumb"],
+nav[aria-label="Breadcrumb"]{
+  display: none !important;
+}
+
+/* ===========================
+   Responsive
+   =========================== */
+@media (max-width: 780px) {
+  .nav-links {
+    display: none; /* hide full nav on small */
+  }
+  .hero {
+    padding-top: 4.5rem;
+  }
+  .two-cols,
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Desktop vs Mobile nav behavior */
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+  .nav-toggle {
+    display: block;
+  }
+}
+
+/* Desktop: force-hide mobile layers (hamburger, drawer, backdrop) */
+@media (min-width: 769px){
+  .nav-toggle{ display: none !important; }
+  .mobile-nav{ display: none !important; }
+  .nav-backdrop{ display: none !important; }
+  .desktop-nav{ display: flex !important; }
+}
+/* i18n: show/hide blocks based on page language */
+.lang-block { display: none; }
+html[lang="en"] .lang-en { display: inline; }
+html[lang="zh"] .lang-zh { display: inline; }

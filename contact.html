@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | EY Trading</title>
-  <meta name="description" content="Contact EY Trading for product inquiries, wholesale cooperation, custom orders, and business partnerships." />
+  <meta
+    name="description"
+    content="Contact EY Trading for product inquiries, wholesale cooperation, custom orders, and business partnerships."
+  />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -58,6 +61,94 @@
       </div>
     </section>
 
+    <section class="page-section" style="padding-top: 0;">
+      <div class="container">
+        <div class="form-box">
+          <h3>Send Us a Message</h3>
+          <p>
+            Use the form below for general inquiries. You can also email us directly at
+            <a href="mailto:info@eytrading.ca">info@eytrading.ca</a>.
+          </p>
+
+          <div
+            id="success-message"
+            style="display:none; margin:16px 0 22px; padding:14px 16px; background:#eef9f0; color:#246b38; border:1px solid #cfe8d5; border-radius:12px;"
+          >
+            Thank you. Your message has been sent successfully.
+          </div>
+
+          <form
+            class="form-grid"
+            action="https://api.web3forms.com/submit"
+            method="POST"
+          >
+            <input
+              type="hidden"
+              name="access_key"
+              value="60eadeb8-1b58-4920-982c-fe836aa09ba6"
+            />
+            <input
+              type="hidden"
+              name="subject"
+              value="New message from EY Trading website"
+            />
+            <input
+              type="hidden"
+              name="from_name"
+              value="EY Trading Website"
+            />
+            <input
+              type="hidden"
+              name="redirect"
+              value="https://eytrading.ca/contact.html?success=1"
+            />
+            <input
+              type="checkbox"
+              name="botcheck"
+              style="display:none;"
+              tabindex="-1"
+              autocomplete="off"
+            />
+
+            <input
+              class="input"
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              required
+            />
+            <input
+              class="input"
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
+            <input
+              class="input"
+              type="text"
+              name="company"
+              placeholder="Company / Business Name"
+            />
+            <input
+              class="input"
+              type="text"
+              name="subject_line"
+              placeholder="Subject"
+            />
+            <textarea
+              class="textarea"
+              name="message"
+              placeholder="Your Message"
+              required
+            ></textarea>
+
+            <button class="btn submit-btn" type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
     <section class="container" style="padding-top: 0; padding-bottom: 72px;">
       <div class="cta">
         <h2>Ready to get in touch?</h2>
@@ -76,5 +167,16 @@
       <div>Enjoy Yourself Trading Inc. | info@eytrading.ca | 306-209-1808</div>
     </div>
   </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("success") === "1") {
+      const successMessage = document.getElementById("success-message");
+      if (successMessage) {
+        successMessage.style.display = "block";
+      }
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  </script>
 </body>
 </html>

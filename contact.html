@@ -49,7 +49,7 @@
 
         <div class="contact-box">
           <h3>Business Inquiries</h3>
-          <p>Contact us for:</p>
+          <p style="margin-bottom: 12px;">Contact us for:</p>
           <ul class="simple-list">
             <li>Retail and wholesale cooperation</li>
             <li>Product information and availability</li>
@@ -111,22 +111,24 @@
               autocomplete="off"
             />
 
-            <input
-              class="input"
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              required
-            />
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+              <input
+                class="input"
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required
+              />
 
-            <input
-              class="input"
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              required
-              id="email-field"
-            />
+              <input
+                class="input"
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required
+                id="email-field"
+              />
+            </div>
 
             <input
               type="hidden"
@@ -135,19 +137,21 @@
               id="replyto-field"
             />
 
-            <input
-              class="input"
-              type="text"
-              name="company"
-              placeholder="Company / Business Name"
-            />
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+              <input
+                class="input"
+                type="text"
+                name="company"
+                placeholder="Company / Business Name"
+              />
 
-            <input
-              class="input"
-              type="text"
-              name="inquiry_subject"
-              placeholder="Subject"
-            />
+              <input
+                class="input"
+                type="text"
+                name="inquiry_subject"
+                placeholder="Subject"
+              />
+            </div>
 
             <textarea
               class="textarea"

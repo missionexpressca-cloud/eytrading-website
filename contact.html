@@ -10,6 +10,39 @@
   />
   <link rel="stylesheet" href="css/styles.css" />
   <script src="js/main.js" defer></script>
+
+  <style>
+    .form-status {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      font-size: 0.96rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .form-status.show {
+      display: block;
+    }
+
+    .form-status.success {
+      background: #edf8f0;
+      color: #1f6b38;
+      border: 1px solid #b9e2c4;
+    }
+
+    .form-status.error {
+      background: #fff1f0;
+      color: #b42318;
+      border: 1px solid #f2b8b5;
+    }
+
+    .btn[disabled] {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -61,34 +94,33 @@
 
           <div class="contact-item">
             <h3>Email</h3>
-            <!-- Replace with your real email -->
-            <p><a href="mailto:your-email@eytrading.ca">your-email@eytrading.ca</a></p>
+            <p><a href="mailto:info@eytrading.ca">info@eytrading.ca</a></p>
           </div>
 
           <div class="contact-item">
             <h3>Phone</h3>
-            <!-- Replace with your real phone -->
-            <p><a href="tel:+13060000000">+1 (306) 000-0000</a></p>
+            <p><a href="tel:+13062091808">306.209.1808</a></p>
           </div>
 
           <div class="contact-item">
             <h3>Location</h3>
-            <!-- Replace with your real address or city -->
             <p>Saskatchewan, Canada</p>
           </div>
         </div>
 
         <div class="contact-form-wrap">
-          <!-- 
-            Replace the form action below with your real Formspree / Formspark / backend endpoint.
-            Example:
-            action="https://formspree.io/f/xxxxxx"
-          -->
           <form
+            id="contactForm"
             class="contact-form"
-            action="https://formspree.io/f/your-form-id"
+            action="https://api.web3forms.com/submit"
             method="POST"
           >
+            <input type="hidden" name="access_key" value="60eadeb8-1b58-4920-982c-fe836aa09ba6" />
+            <input type="hidden" name="subject" id="email-subject" value="New message from eytrading.ca" />
+            <input type="hidden" name="from_name" value="EY Trading Website" />
+            <input type="hidden" name="replyto" id="replyto-field" value="" />
+            <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />
+
             <div class="form-row">
               <div class="form-field">
                 <label for="name">Your Name</label>
@@ -102,16 +134,32 @@
             </div>
 
             <div class="form-field">
-              <label for="subject">Subject</label>
-              <input type="text" id="subject" name="subject" placeholder="How can we help?" required />
+              <label for="subject-field">Subject</label>
+              <input
+                type="text"
+                id="subject-field"
+                name="inquiry_subject"
+                placeholder="How can we help?"
+                required
+              />
             </div>
 
             <div class="form-field">
               <label for="message">Message</label>
-              <textarea id="message" name="message" rows="7" placeholder="Write your message here..." required></textarea>
+              <textarea
+                id="message"
+                name="message"
+                rows="7"
+                placeholder="Write your message here..."
+                required
+              ></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary full-width">Send Message</button>
+            <button type="submit" class="btn btn-primary full-width" id="submitBtn">
+              Send Message
+            </button>
+
+            <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
           </form>
         </div>
       </div>
@@ -148,5 +196,57 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    const form = document.getElementById("contactForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const statusBox = document.getElementById("form-status");
+    const subjectField = document.getElementById("subject-field");
+    const emailField = document.getElementById("email");
+    const hiddenSubject = document.getElementById("email-subject");
+    const replytoField = document.getElementById("replyto-field");
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      statusBox.className = "form-status";
+      statusBox.textContent = "";
+
+      hiddenSubject.value = subjectField.value
+        ? "EY Trading inquiry: " + subjectField.value
+        : "New message from eytrading.ca";
+
+      replytoField.value = emailField.value || "";
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending...";
+
+      try {
+        const formData = new FormData(form);
+
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          statusBox.className = "form-status success show";
+          statusBox.textContent = "Message sent successfully. Thank you for contacting EY Trading.";
+          form.reset();
+        } else {
+          statusBox.className = "form-status error show";
+          statusBox.textContent = data.message || "Something went wrong. Please try again.";
+        }
+      } catch (error) {
+        statusBox.className = "form-status error show";
+        statusBox.textContent = "Unable to send your message right now. Please try again later.";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Send Message";
+      }
+    });
+  </script>
 </body>
 </html>

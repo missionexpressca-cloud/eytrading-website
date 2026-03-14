@@ -70,6 +70,13 @@
             <a href="mailto:info@eytrading.ca">info@eytrading.ca</a>.
           </p>
 
+          <div
+            id="success-message"
+            style="display:none; margin:16px 0 22px; padding:14px 16px; background:#eef9f0; color:#246b38; border:1px solid #cfe8d5; border-radius:12px;"
+          >
+            Thank you. Your message has been sent successfully.
+          </div>
+
           <form
             class="form-grid"
             action="https://api.web3forms.com/submit"
@@ -81,19 +88,21 @@
               name="access_key"
               value="60eadeb8-1b58-4920-982c-fe836aa09ba6"
             />
-
             <input
               type="hidden"
               name="subject"
               value="New message from EY Trading website"
             />
-
             <input
               type="hidden"
               name="from_name"
               value="EY Trading Website"
             />
-
+            <input
+              type="hidden"
+              name="redirect"
+              value="https://eytrading.ca/contact.html?success=1"
+            />
             <input
               type="checkbox"
               name="botcheck"
@@ -116,6 +125,7 @@
               name="email"
               placeholder="Your Email"
               required
+              id="email-field"
             />
 
             <input
@@ -148,11 +158,6 @@
 
             <button class="btn submit-btn" type="submit">Send Message</button>
           </form>
-
-          <p style="margin-top:16px; color:#666; font-size:14px;">
-            After clicking “Send Message”, you should be taken to a Web3Forms success page.
-            If that page appears, the form is working.
-          </p>
         </div>
       </div>
     </section>
@@ -177,13 +182,22 @@
   </footer>
 
   <script>
-    const emailField = document.querySelector('input[name="email"]');
+    const emailField = document.getElementById("email-field");
     const replyToField = document.getElementById("replyto-field");
 
     if (emailField && replyToField) {
       emailField.addEventListener("input", function () {
         replyToField.value = emailField.value.trim();
       });
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("success") === "1") {
+      const successMessage = document.getElementById("success-message");
+      if (successMessage) {
+        successMessage.style.display = "block";
+      }
+      window.history.replaceState({}, document.title, window.location.pathname);
     }
   </script>
 </body>

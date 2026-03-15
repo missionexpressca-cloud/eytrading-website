@@ -309,6 +309,11 @@ ul {
   grid-template-columns: 0.9fr 1.1fr;
 }
 
+.split-home {
+  grid-template-columns: 1fr 1fr;
+  gap: 44px;
+}
+
 .logo-panel {
   display: flex;
   align-items: center;
@@ -343,6 +348,14 @@ ul {
   min-height: 500px;
   object-fit: cover;
   display: block;
+}
+
+.home-image-panel {
+  min-height: 560px;
+}
+
+.home-image-panel img {
+  min-height: 560px;
 }
 
 .rounded-image {
@@ -658,6 +671,7 @@ ul {
 
   .split,
   .split.reverse,
+  .split-home,
   .contact-grid {
     grid-template-columns: 1fr;
   }
@@ -665,6 +679,11 @@ ul {
   .cta-box {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .home-image-panel,
+  .home-image-panel img {
+    min-height: 480px;
   }
 }
 
@@ -773,5 +792,10 @@ ul {
   .image-panel,
   .image-panel img {
     min-height: 340px;
+  }
+
+  .home-image-panel,
+  .home-image-panel img {
+    min-height: 380px;
   }
 }

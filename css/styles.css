@@ -10,6 +10,7 @@
   --primary-2: #7a5b49;
   --accent: #e9d9cc;
   --shadow: 0 14px 34px rgba(65, 44, 33, 0.08);
+  --shadow-soft: 0 10px 26px rgba(65, 44, 33, 0.05);
   --radius-xl: 28px;
   --radius-lg: 22px;
   --radius-md: 16px;
@@ -338,6 +339,12 @@ textarea {
   flex: 1;
 }
 
+.card-kicker {
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
 .card-body h3 {
   margin: 0 0 10px;
   font-size: 1.05rem;
@@ -362,6 +369,48 @@ textarea {
 .info-card p {
   margin: 0;
   color: var(--muted);
+}
+
+/* Product groups */
+.product-groups {
+  gap: 34px;
+}
+
+.product-group {
+  padding: 28px;
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: var(--shadow-soft);
+}
+
+.group-head {
+  margin-bottom: 22px;
+  max-width: 760px;
+}
+
+.group-head h3 {
+  margin: 10px 0 8px;
+  font-size: 1.7rem;
+  line-height: 1.15;
+}
+
+.group-head p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.group-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 14px;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 /* CTA */
@@ -560,6 +609,10 @@ textarea {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .card-grid.three {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .split,
   .contact-grid {
     grid-template-columns: 1fr;
@@ -648,5 +701,13 @@ textarea {
 
   .cta-box {
     padding: 24px 20px;
+  }
+
+  .product-group {
+    padding: 20px;
+  }
+
+  .group-head h3 {
+    font-size: 1.4rem;
   }
 }

@@ -1,74 +1,115 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const navToggle = document.querySelector(".nav-toggle");
-  const navList = document.querySelector(".nav-list");
-  const yearEl = document.getElementById("year");
-
-  if (navToggle && navList) {
-    navToggle.addEventListener("click", () => {
-      const isOpen = navList.classList.toggle("open");
-      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    });
-
-    document.querySelectorAll(".nav-link").forEach((link) => {
-      link.addEventListener("click", () => {
-        navList.classList.remove("open");
-        navToggle.setAttribute("aria-expanded", "false");
-      });
-    });
-  }
+document.addEventListener('DOMContentLoaded', function () {
+  const navToggle = document.querySelector('.nav-toggle');
+  const siteNav = document.querySelector('.site-nav');
+  const navLinks = document.querySelectorAll('.site-nav .nav-link');
+  const yearEl = document.getElementById('year');
 
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
 
-  const form = document.getElementById("contactForm");
-  const submitBtn = document.getElementById("submitBtn");
-  const statusBox = document.getElementById("form-status");
-  const subjectField = document.getElementById("subject-field");
-  const emailField = document.getElementById("email");
-  const hiddenSubject = document.getElementById("email-subject");
-  const replytoField = document.getElementById("replyto-field");
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
 
-  if (form && submitBtn && statusBox && subjectField && emailField && hiddenSubject && replytoField) {
-    form.addEventListener("submit", async function (e) {
+      const isOpen = siteNav.classList.toggle('open');
+      navToggle.classList.toggle('is-active', isOpen);
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      document.body.classList.toggle('nav-open', isOpen);
+    });
+
+    navLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        siteNav.classList.remove('open');
+        navToggle.classList.remove('is-active');
+        navToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-open');
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!siteNav.contains(e.target) && !navToggle.contains(e.target)) {
+        siteNav.classList.remove('open');
+        navToggle.classList.remove('is-active');
+        navToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-open');
+      }
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 760) {
+        siteNav.classList.remove('open');
+        navToggle.classList.remove('is-active');
+        navToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-open');
+      }
+    });
+  }
+
+  const contactForm = document.getElementById('contactForm');
+  const emailInput = document.getElementById('email');
+  const subjectField = document.getElementById('subject-field');
+  const replytoField = document.getElementById('replyto-field');
+  const emailSubject = document.getElementById('email-subject');
+  const formStatus = document.getElementById('form-status');
+  const submitBtn = document.getElementById('submitBtn');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function (e) {
       e.preventDefault();
 
-      statusBox.className = "form-status";
-      statusBox.textContent = "";
+      if (replytoField && emailInput) {
+        replytoField.value = emailInput.value.trim();
+      }
 
-      hiddenSubject.value = subjectField.value
-        ? "Website inquiry: " + subjectField.value
-        : "New message from eytrading.ca";
+      if (emailSubject && subjectField && subjectField.value.trim()) {
+        emailSubject.value = 'New message from everyonder.ca: ' + subjectField.value.trim();
+      }
 
-      replytoField.value = emailField.value || "";
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Sending...";
+      const formData = new FormData(contactForm);
 
       try {
-        const formData = new FormData(form);
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Sending...';
+        }
 
-        const response = await fetch(form.action, {
-          method: "POST",
-          body: formData
+        if (formStatus) {
+          formStatus.classList.add('show');
+          formStatus.textContent = 'Sending your message...';
+        }
+
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            Accept: 'application/json'
+          }
         });
 
-        const data = await response.json();
+        const result = await response.json();
 
-        if (response.ok && data.success) {
-          statusBox.className = "form-status success show";
-          statusBox.textContent = "Message sent successfully. Thank you for contacting us.";
-          form.reset();
+        if (response.ok) {
+          if (formStatus) {
+            formStatus.textContent = 'Message sent successfully.';
+          }
+          contactForm.reset();
         } else {
-          statusBox.className = "form-status error show";
-          statusBox.textContent = data.message || "Something went wrong. Please try again.";
+          if (formStatus) {
+            formStatus.textContent = result.message || 'Failed to send message.';
+          }
         }
       } catch (error) {
-        statusBox.className = "form-status error show";
-        statusBox.textContent = "Unable to send your message right now. Please try again later.";
+        if (formStatus) {
+          formStatus.classList.add('show');
+          formStatus.textContent = 'Network error. Please try again.';
+        }
       } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Send Message";
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+        }
       }
     });
   }
